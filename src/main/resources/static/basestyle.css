@@ -1,0 +1,184 @@
+/* Default things */
+body{ padding:0px; margin:0px;}
+:root {
+    --backgroundColor: white;
+    --mainColor: #0E3554;
+    --secondaryColor: #E9BB20;
+    --mainColor_Off: #4D7AA1;
+    --textColor: #2F4556;
+    --neutralColor: #4B4540;
+    --pinkColor:#E6306D;
+    --bluColor: #139FC2;
+
+}
+
+input[type="text" i] {
+    padding: 4px 4px;
+    margin-right: 5px;
+    border-radius: 10px;
+    border: solid 1px gray;
+    width: clamp(200px, 320px,325px);
+}
+
+.placeholderCircle{
+    height:clamp(30px,3vw,40px);
+    width:clamp(30px,3vw,40px);
+    border-radius:50%;
+    border:none;
+    background-color: var(--pinkColor);
+    display: flex;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.placeholderSquare{
+    height:clamp(30px,3vw,40px);
+    width:clamp(30px,3vw,40px);
+    border-radius:5px;
+    border:none;
+    background-color: var(--secondaryColor);
+    display: flex;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Id's */
+#topnav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0px;
+    gap:25px;
+    
+
+    height: 44px;
+    padding: clamp(0px,1vw,50px);
+    background: var(--mainColor);
+}
+
+#topnavButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+    gap: 30px;
+
+    height: 45px;
+    /*background-color: var(--secondaryColor);*/
+}
+
+#header{
+    display: inline-block;
+    height: 50vw;
+    background-color: var(--secondaryColor);
+}
+
+#footer{
+    background-color: var(--pinkColor);
+}
+
+
+
+/* Classes*/
+
+.content{
+    padding: clamp(20px, 5%, 50px);
+    padding-top:20px;
+    padding-bottom:20px;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-style: bold;
+    font-size:16px;
+    color: var(--mainColor);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns:
+      repeat(
+        auto-fit,
+        minmax(300px/* min value */, 1fr /* max value */)
+      );
+    gap: 30px;
+
+    /* Adding color for tests */
+    background: solid white;
+  }
+
+.gridItem {
+/*background: #90bcbc;*/
+border-radius: 4px;
+
+
+}
+
+/* -----Button Classes: */
+.buttonSmall {
+    background-color: var(--pinkColor);
+    border:none;
+    border-radius:50px;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+/*Switch toggle button from W3bschools*/
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  } 
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: var(--mainColor_Off);
+  }
+  input:focus + .slider {
+    box-shadow: 0 0 1px var(--mainColor_Off);
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+
+

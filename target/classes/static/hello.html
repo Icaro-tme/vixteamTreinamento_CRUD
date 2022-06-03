@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Fontes: -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--Dosis para Título (64px,32px FULLCAPS)-->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500;800&display=swap" rel="stylesheet">
+    <!--Roboto para Texto (32px, 18px, 16px, 14px)-->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+
+    <link href="basestyle.css" rel="stylesheet" type="text/css">
+    <script src="script.js"></script>
+
+    
+</head>
+<body>
+
+<div id="topnav">
+    <div class="placeholderSquare">A</div>
+    <div id="topnavButtons">
+        <div class="placeholderCircle">B</div>
+        <div class="placeholderCircle">C</div>
+    </div>
+</div>
+
+
+<div class="content">
+    <div class="grid">
+        <div class="gridItem">
+            <form action="/helloBuscarNome">
+                <label>Nome:<br></label>
+                <input type="text" id="fnameId" name="fname" placeholder="Write client's name...">
+                <input class="buttonSmall" type ="submit" value="Submit">
+            </form>
+        </div>
+        <div class="gridItem">
+            <form action="/helloBuscarCPF">
+                <label>CPF:<br></label>
+                <input type="text" id="fCPFId" name="fCPF" placeholder="Write client's CPF...">
+                <input class="buttonSmall" type ="submit" value="Submit">
+            </form>
+        </div>
+        <div class="gridItem">
+            <form action="/helloBuscarEmail">
+                <label>E-mail:<br></label>
+                <input type="text" id="femailId" name="femail" placeholder="Write client's email...">
+                <input class="buttonSmall" type ="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+    <div class = "content">
+        <div class="grid">
+            <div class="gridItem">
+
+            </div>
+        </div>
+    
+        <form>
+            <input class="buttonSmall" type="button" value="Go to form!" onclick="goToLink('form')" />
+        </form>
+    </div>
+
+    
+</body>
+</html>
