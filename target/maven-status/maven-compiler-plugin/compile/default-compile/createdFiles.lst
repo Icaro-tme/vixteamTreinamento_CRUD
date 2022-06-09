@@ -1,4 +1,8 @@
-com\example\icaro\HelloWorldRest.class
-com\example\icaro\Cliente_Afazer.class
+com\example\icaro\controllers\ClientServiceImpl.class
+com\example\icaro\controllers\ClientController.class
 com\example\icaro\HelloWorld.class
+com\example\icaro\controllers\ClientService.class
+com\example\icaro\controllers\ClientRepositorio.class
+com\example\icaro\controllers\ClientMapper.class
 com\example\icaro\IcaroApplication.class
+com\example\icaro\models\Client.class
