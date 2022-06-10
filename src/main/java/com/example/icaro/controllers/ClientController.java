@@ -1,6 +1,7 @@
 package com.example.icaro.controllers;
 
 import com.example.icaro.models.Client;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,39 +21,84 @@ public class ClientController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @GetMapping("/clientTodos")
+    public String todosClientes(){
+        List<Client> todosClientes = clientService.getClients();
+        JSONArray clienteJson = new JSONArray(todosClientes);
+        return "{\"success\": true,\"counters\":"+clienteJson.toString()+"}";
+    }
+
+    @GetMapping("/clientAdicionar")
+    public String adicionarCliente(@RequestParam(name = "faddname") String nome, @RequestParam(name = "faddCPF")int cpf, @RequestParam(name = "faddemail")String email){
+        Client clienteNovo = new Client();
+        clienteNovo.setId(null);
+        clienteNovo.setNome(nome);
+        clienteNovo.setCpf(cpf);
+        clienteNovo.setEmail(email);
+
+        Client clienteAdicionado = clientService.saveClient(clienteNovo);
+
+        JSONObject clienteJson = new JSONObject(clienteAdicionado);
+
+        return "Cliente adicionado:"+clienteJson.toString();
+
+    }
+
+    @GetMapping("/clientAlterar")
+    public String alterarCliente(@RequestParam(name = "faltid")long id, @RequestParam(name = "faltname") String nome, @RequestParam(name = "faltCPF")int cpf, @RequestParam(name = "faltemail")String email){
+        Client clienteVelho = new Client();
+        clienteVelho.setId(id);
+        clienteVelho.setNome(nome);
+        clienteVelho.setCpf(cpf);
+        clienteVelho.setEmail(email);
+
+        JSONObject clienteVelhoJson = new JSONObject(clienteVelho);
+
+        Client clienteAlterado = clientService.updateClient(clienteVelho);
+
+        JSONObject clienteJson = new JSONObject(clienteAlterado);
+        return "Cliente alterado de:"+clienteVelhoJson.toString()+" para:"+clienteJson;
+
+    }
+
     @GetMapping("/clientBuscarNome")
     public String buscarNome(@RequestParam(name = "fname") String nome){
 
         List<Client> clientesEncontrados = clientService.getClientByNome(nome);
 
+
         JSONObject clienteJson = null;
+
         if(!clientesEncontrados.isEmpty()){
             clienteJson = new JSONObject(clientesEncontrados.get(0));//Exemplo
         }
-        return !clientesEncontrados.isEmpty() ? clienteJson.toString() : "null";
+//
+        return !clientesEncontrados.isEmpty() ? clienteJson.toString()  : "null";
+
     }
 
     @GetMapping("/clientBuscarId")
     public String buscarId(@RequestParam(name = "fid") long id){
 
-        List<Client> clientesEncontrados = clientService.getClientById(id);
+        Client clientesEncontrados = clientService.getClientById(id);
 
         JSONObject clienteJson = null;
-        if(!clientesEncontrados.isEmpty()){
-            clienteJson = new JSONObject(clientesEncontrados.get(0));//Exemplo
-        }
-        return !clientesEncontrados.isEmpty() ? clienteJson.toString() : "null";
+        clienteJson = new JSONObject(clientesEncontrados);
+
+        return clienteJson.toString();
     }
 
-    @GetMapping("/clientDeletarID")
-    public String deletarID(@RequestParam(name = "fdeletarID") long id){
+    @GetMapping("/clientDeletar")
+    public String deletarID(@RequestParam(name = "fdeleteid") long id){
 
-        List<Client> clientesEncontrados = clientService.getClientById(id);
-        JSONObject clienteJson = null;
+        Client clienteEncontrado = clientService.getClientById(id);
 
+        JSONObject clienteJson = new JSONObject(clienteEncontrado);
         //função nao retorna nada
-        clientService.deleteClientById(id);
-        return "null";
+        clientService.deleteClient(id);
+
+
+        return "Cliente adicionado:"+clienteJson.toString();
     }
 
 

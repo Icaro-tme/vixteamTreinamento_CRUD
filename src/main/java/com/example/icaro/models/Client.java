@@ -1,21 +1,19 @@
 package com.example.icaro.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="cliente")
 public class Client {
     @Id
-    @Column(name = "CLIENTE_ID", nullable = false)
+    @Column(name = "CLIENTE_ID", unique=true, nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Column(name="CLIENTE_NOME", nullable = false)
     private String nome;
     @Column(name="CLIENTE_CPF", nullable = false)
-    private int CPF;
+    private int cpf;
     @Column(name="CLIENTE_EMAIL", nullable = false)
     private String email;
 
@@ -34,7 +32,7 @@ public class Client {
     public Client(){
         this.id = id;
         this.nome = nome;
-        this.CPF = CPF;
+        this.cpf = cpf;
         this.email = email;
     }
 
@@ -43,12 +41,12 @@ public class Client {
         this.nome = nome;
     }
 
-    public int getCPF() {
-        return CPF;
+    public int getCpf() {
+        return cpf;
     }
 
-    public void setCPF(int CPF) {
-        this.CPF = CPF;
+    public void setCpf(int cpf) {
+        this.cpf = cpf;
     }
 
     public String getEmail() {

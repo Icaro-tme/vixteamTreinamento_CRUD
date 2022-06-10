@@ -5,10 +5,28 @@ import java.util.List;
 
 public interface ClientService {
 
-    List<Client> getAllClient();
+
+//    Client saveClient(Client client);
+//    List<Client> saveAllClients(List<Client> clients);
+//    List<Client> getAll();
+
     List<Client>  getClientByNome(String nome);
 
-    List<Client>  getClientById(long id);
+    Client saveClient(Client client);
 
-    List<Client> deleteClientById(long id);
+    List<Client> saveAllClients(List<Client> clients);
+
+    List<Client> getClients();
+
+    Client  getClientById(long id);
+
+    Client getClientByCpf(int Cpf);
+
+    Client getClientByEmail(String email);
+
+
+    String deleteClient(long id);
+
+    Client updateClient(Client newclient);
+
 }

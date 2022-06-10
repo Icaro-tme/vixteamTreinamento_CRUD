@@ -7,9 +7,18 @@ import java.util.List;
 
 
 public interface ClientRepositorio extends JpaRepository <Client, Long> {
+
+//    Client save(Client client);
+//    List<Client> saveAll(List<Client> clients);
+
+    List<Client> findAll();
+    Client findById(long id);
     List<Client> findByNome(String nome);
+    Client findByEmail(String email);
+    Client findByCpf(int cpf);
 
-    List<Client> findById(long id);
-    List<Client> deleteById(long id);
+    String deleteById(long id);
 
+//    void updateClient(Client client);
 }
+

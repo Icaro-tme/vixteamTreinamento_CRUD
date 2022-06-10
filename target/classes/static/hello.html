@@ -16,6 +16,7 @@
 
     <!--import jquery (comprimido)-->
     <script src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 
     <link href="css/basestyle.css" rel="stylesheet" type="text/css">
     <link href="css/slides.css" rel="stylesheet" type="text/css">
@@ -115,6 +116,15 @@
                 <input class="buttonSmall" type="button" value="Search" onclick="buscarClienteEmail()">
 
             </form>
+
+            <div class="gridItem">
+                <form id="formDelete">
+                    <label>Delete by ID: <br></label>
+                    <input type="text" id="fdeleteId" name="fdelete" placeholder="Write client's Id...">
+                    <input class="buttonSmall" type="button" value="Delete" onclick="deletar()">
+                </form>
+            </div>
+
         </div>
 
 
@@ -122,26 +132,89 @@
 
 </div>
 
-<div class="subtitle">
-    <h3>Resultados:</h3>
-</div>
 <div class="content">
     <div class="grid">
         <div class="gridItem">
-            <input class="buttonSmall" type="button" value="Go to form!" onclick="goToLink('form')"/>
+            <form id="formClient">
+                <label>Add client:<br></label>
+
+                <input type="text" id="faddnameId" name="addfname" placeholder="Name">
+
+                <input type="text" id="faddCPFId" name="faddCPF"
+                       data-type="number" type="text" minlength="11" maxlength="11"
+                       placeholder="CPF">
+
+                <input type="text" id="faddemailId" name="faddemail" placeholder="Email">
+
+                <input class="buttonSmall" type="button" value="Add" onclick="adicionar()">
+                <input class="buttonSmall" type="button" value="showAll" onclick="mostrarTodos()">
+
+            </form>
+        </div>
+        <div class="gridItem">
+            <form id="formAltClient">
+                <label>Add client:<br></label>
+
+                <input type="text" id="faltidId" name="faltid" placeholder="Id">
+
+                <input type="text" id="faltnameId" name="faltname" placeholder="Name">
+
+                <input type="text" id="faltCPFId" name="faltCPF"
+                       data-type="number" type="text" minlength="11" maxlength="11"
+                       placeholder="CPF">
+
+                <input type="text" id="faltemailId" name="faltemail" placeholder="Email">
+
+                <input class="buttonSmall" type="button" value="Alter By ID" onclick="alterar()">
+
+
+            </form>
         </div>
     </div>
+</div>
+
+
+<div class="content">
+    <div class="subtitle">
+        <h3>Resultados:</h3>
+    </div>
+    <div id="resposta_div">Result</div>
     <div class="grid">
         <div class="gridItem">
-            <input class="buttonSmall" type="button" value="TestAlert!" onclick="error()"/>
+            <table id="tblData" class="tbl">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>CPF</th>
+                        <th>E-mail</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tblBody">
+                </tbody>
+            </table>
         </div>
     </div>
+
 
 
 </div>
 
-
+<input class="buttonSmall" type="button" value="TestAlert!" onclick="error()"/>
 <hr>
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Site footer -->
 
 <footer class="footer">
@@ -224,7 +297,7 @@
 <script type="text/javascript" src="js/navbar.js"></script>
 <!--Desativado para testar outras funcções do site-->
 <!--<script type="text/javascript" src="js/slides.js"></script>-->
-<script type="text/javascript" src="js/script.js"></script>
+
 
 </body>
 </html>
